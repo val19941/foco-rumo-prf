@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EstudarRouteImport } from './routes/estudar'
+import { Route as MedicacaoRouteImport } from './routes/medicacao'
+import { Route as PlanejadorRouteImport } from './routes/planejador'
+import { Route as RevisoesRouteImport } from './routes/revisoes'
+import { Route as PrfIndexRouteImport } from './routes/prf.index'
+import { Route as PrfSubjectIdRouteImport } from './routes/prf.$subjectId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EstudarRoute = EstudarRouteImport.update({
+  id: '/estudar',
+  path: '/estudar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicacaoRoute = MedicacaoRouteImport.update({
+  id: '/medicacao',
+  path: '/medicacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanejadorRoute = PlanejadorRouteImport.update({
+  id: '/planejador',
+  path: '/planejador',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RevisoesRoute = RevisoesRouteImport.update({
+  id: '/revisoes',
+  path: '/revisoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrfIndexRoute = PrfIndexRouteImport.update({
+  id: '/prf/',
+  path: '/prf/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrfSubjectIdRoute = PrfSubjectIdRouteImport.update({
+  id: '/prf/$subjectId',
+  path: '/prf/$subjectId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/estudar': typeof EstudarRoute
+  '/medicacao': typeof MedicacaoRoute
+  '/planejador': typeof PlanejadorRoute
+  '/revisoes': typeof RevisoesRoute
+  '/prf/$subjectId': typeof PrfSubjectIdRoute
+  '/prf/': typeof PrfIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/estudar': typeof EstudarRoute
+  '/medicacao': typeof MedicacaoRoute
+  '/planejador': typeof PlanejadorRoute
+  '/revisoes': typeof RevisoesRoute
+  '/prf/$subjectId': typeof PrfSubjectIdRoute
+  '/prf': typeof PrfIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/estudar': typeof EstudarRoute
+  '/medicacao': typeof MedicacaoRoute
+  '/planejador': typeof PlanejadorRoute
+  '/revisoes': typeof RevisoesRoute
+  '/prf/$subjectId': typeof PrfSubjectIdRoute
+  '/prf/': typeof PrfIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/estudar'
+    | '/medicacao'
+    | '/planejador'
+    | '/revisoes'
+    | '/prf/$subjectId'
+    | '/prf/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/estudar'
+    | '/medicacao'
+    | '/planejador'
+    | '/revisoes'
+    | '/prf/$subjectId'
+    | '/prf'
+  id:
+    | '__root__'
+    | '/'
+    | '/estudar'
+    | '/medicacao'
+    | '/planejador'
+    | '/revisoes'
+    | '/prf/$subjectId'
+    | '/prf/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EstudarRoute: typeof EstudarRoute
+  MedicacaoRoute: typeof MedicacaoRoute
+  PlanejadorRoute: typeof PlanejadorRoute
+  RevisoesRoute: typeof RevisoesRoute
+  PrfSubjectIdRoute: typeof PrfSubjectIdRoute
+  PrfIndexRoute: typeof PrfIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/estudar': {
+      id: '/estudar'
+      path: '/estudar'
+      fullPath: '/estudar'
+      preLoaderRoute: typeof EstudarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medicacao': {
+      id: '/medicacao'
+      path: '/medicacao'
+      fullPath: '/medicacao'
+      preLoaderRoute: typeof MedicacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planejador': {
+      id: '/planejador'
+      path: '/planejador'
+      fullPath: '/planejador'
+      preLoaderRoute: typeof PlanejadorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/revisoes': {
+      id: '/revisoes'
+      path: '/revisoes'
+      fullPath: '/revisoes'
+      preLoaderRoute: typeof RevisoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prf/': {
+      id: '/prf/'
+      path: '/prf'
+      fullPath: '/prf/'
+      preLoaderRoute: typeof PrfIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prf/$subjectId': {
+      id: '/prf/$subjectId'
+      path: '/prf/$subjectId'
+      fullPath: '/prf/$subjectId'
+      preLoaderRoute: typeof PrfSubjectIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EstudarRoute: EstudarRoute,
+  MedicacaoRoute: MedicacaoRoute,
+  PlanejadorRoute: PlanejadorRoute,
+  RevisoesRoute: RevisoesRoute,
+  PrfSubjectIdRoute: PrfSubjectIdRoute,
+  PrfIndexRoute: PrfIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
