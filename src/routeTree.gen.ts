@@ -10,8 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DadosRouteImport } from './routes/dados'
+import { Route as DesempenhoRouteImport } from './routes/desempenho'
+import { Route as DiarioRouteImport } from './routes/diario'
 import { Route as EstudarRouteImport } from './routes/estudar'
 import { Route as MedicacaoRouteImport } from './routes/medicacao'
+import { Route as OrientadorRouteImport } from './routes/orientador'
 import { Route as PlanejadorRouteImport } from './routes/planejador'
 import { Route as RevisoesRouteImport } from './routes/revisoes'
 import { Route as PrfIndexRouteImport } from './routes/prf.index'
@@ -22,6 +26,21 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DadosRoute = DadosRouteImport.update({
+  id: '/dados',
+  path: '/dados',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesempenhoRoute = DesempenhoRouteImport.update({
+  id: '/desempenho',
+  path: '/desempenho',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiarioRoute = DiarioRouteImport.update({
+  id: '/diario',
+  path: '/diario',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EstudarRoute = EstudarRouteImport.update({
   id: '/estudar',
   path: '/estudar',
@@ -30,6 +49,11 @@ const EstudarRoute = EstudarRouteImport.update({
 const MedicacaoRoute = MedicacaoRouteImport.update({
   id: '/medicacao',
   path: '/medicacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrientadorRoute = OrientadorRouteImport.update({
+  id: '/orientador',
+  path: '/orientador',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlanejadorRoute = PlanejadorRouteImport.update({
@@ -55,8 +79,12 @@ const PrfSubjectIdRoute = PrfSubjectIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dados': typeof DadosRoute
+  '/desempenho': typeof DesempenhoRoute
+  '/diario': typeof DiarioRoute
   '/estudar': typeof EstudarRoute
   '/medicacao': typeof MedicacaoRoute
+  '/orientador': typeof OrientadorRoute
   '/planejador': typeof PlanejadorRoute
   '/revisoes': typeof RevisoesRoute
   '/prf/$subjectId': typeof PrfSubjectIdRoute
@@ -64,8 +92,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dados': typeof DadosRoute
+  '/desempenho': typeof DesempenhoRoute
+  '/diario': typeof DiarioRoute
   '/estudar': typeof EstudarRoute
   '/medicacao': typeof MedicacaoRoute
+  '/orientador': typeof OrientadorRoute
   '/planejador': typeof PlanejadorRoute
   '/revisoes': typeof RevisoesRoute
   '/prf/$subjectId': typeof PrfSubjectIdRoute
@@ -74,8 +106,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dados': typeof DadosRoute
+  '/desempenho': typeof DesempenhoRoute
+  '/diario': typeof DiarioRoute
   '/estudar': typeof EstudarRoute
   '/medicacao': typeof MedicacaoRoute
+  '/orientador': typeof OrientadorRoute
   '/planejador': typeof PlanejadorRoute
   '/revisoes': typeof RevisoesRoute
   '/prf/$subjectId': typeof PrfSubjectIdRoute
@@ -85,8 +121,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/dados'
+    | '/desempenho'
+    | '/diario'
     | '/estudar'
     | '/medicacao'
+    | '/orientador'
     | '/planejador'
     | '/revisoes'
     | '/prf/$subjectId'
@@ -94,8 +134,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/dados'
+    | '/desempenho'
+    | '/diario'
     | '/estudar'
     | '/medicacao'
+    | '/orientador'
     | '/planejador'
     | '/revisoes'
     | '/prf/$subjectId'
@@ -103,8 +147,12 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/dados'
+    | '/desempenho'
+    | '/diario'
     | '/estudar'
     | '/medicacao'
+    | '/orientador'
     | '/planejador'
     | '/revisoes'
     | '/prf/$subjectId'
@@ -113,8 +161,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DadosRoute: typeof DadosRoute
+  DesempenhoRoute: typeof DesempenhoRoute
+  DiarioRoute: typeof DiarioRoute
   EstudarRoute: typeof EstudarRoute
   MedicacaoRoute: typeof MedicacaoRoute
+  OrientadorRoute: typeof OrientadorRoute
   PlanejadorRoute: typeof PlanejadorRoute
   RevisoesRoute: typeof RevisoesRoute
   PrfSubjectIdRoute: typeof PrfSubjectIdRoute
@@ -130,6 +182,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dados': {
+      id: '/dados'
+      path: '/dados'
+      fullPath: '/dados'
+      preLoaderRoute: typeof DadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/desempenho': {
+      id: '/desempenho'
+      path: '/desempenho'
+      fullPath: '/desempenho'
+      preLoaderRoute: typeof DesempenhoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diario': {
+      id: '/diario'
+      path: '/diario'
+      fullPath: '/diario'
+      preLoaderRoute: typeof DiarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/estudar': {
       id: '/estudar'
       path: '/estudar'
@@ -142,6 +215,13 @@ declare module '@tanstack/react-router' {
       path: '/medicacao'
       fullPath: '/medicacao'
       preLoaderRoute: typeof MedicacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orientador': {
+      id: '/orientador'
+      path: '/orientador'
+      fullPath: '/orientador'
+      preLoaderRoute: typeof OrientadorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/planejador': {
@@ -177,8 +257,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DadosRoute: DadosRoute,
+  DesempenhoRoute: DesempenhoRoute,
+  DiarioRoute: DiarioRoute,
   EstudarRoute: EstudarRoute,
   MedicacaoRoute: MedicacaoRoute,
+  OrientadorRoute: OrientadorRoute,
   PlanejadorRoute: PlanejadorRoute,
   RevisoesRoute: RevisoesRoute,
   PrfSubjectIdRoute: PrfSubjectIdRoute,
