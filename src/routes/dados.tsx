@@ -39,7 +39,11 @@ function DataPage() {
   const setAdjustments = useApp((s) => s.setAdjustments);
   const importData = useApp((s) => s.importData);
   const resetAll = useApp((s) => s.resetAll);
-  const counts = useApp((s) => ({ sessions: s.sessions.length, doses: s.doses.length, subjects: s.subjects.length }));
+  const counts = {
+    sessions: useApp((s) => s.sessions.length),
+    doses: useApp((s) => s.doses.length),
+    subjects: useApp((s) => s.subjects.length),
+  };
   const fileRef = useRef<HTMLInputElement>(null);
   const [pendingImport, setPendingImport] = useState<AppData | null>(null);
   const [confirmReset, setConfirmReset] = useState(false);

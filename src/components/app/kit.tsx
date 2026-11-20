@@ -145,7 +145,7 @@ export function Ring({ value, size = 120, stroke = 11, children }: { value: numb
   );
 }
 
-export function Bar({ value, className }: { value: number; className?: string }) {
+export function Bar({ value, className }: { value: number; className?: string | undefined }) {
   return (
     <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
       <div className={cn("h-full rounded-full bg-primary transition-all", className)} style={{ width: `${Math.max(0, Math.min(100, value * 100))}%` }} />
