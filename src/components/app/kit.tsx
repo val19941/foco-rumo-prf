@@ -120,14 +120,14 @@ export function Empty({ title, text, action }: { title: string; text?: string; a
   );
 }
 
-export function Ring({ value, size = 120, stroke = 11, children }: { value: number; size?: number; stroke?: number; children?: ReactNode }) {
+export function Ring({ value, size = 120, stroke = 11, children, tone = "primary" }: { value: number; size?: number; stroke?: number; children?: ReactNode; tone?: "primary" | "highlight" }) {
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
   const v = Math.max(0, Math.min(1, value));
   return (
     <div className="relative shrink-0" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} strokeWidth={stroke} fill="none" className="stroke-muted" />
+        <circle cx={size / 2} cy={size / 2} r={r} strokeWidth={stroke} fill="none" className={tone === "highlight" ? "stroke-primary-foreground/20" : "stroke-muted"} />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -137,7 +137,7 @@ export function Ring({ value, size = 120, stroke = 11, children }: { value: numb
           strokeLinecap="round"
           strokeDasharray={c}
           strokeDashoffset={c * (1 - v)}
-          className="stroke-primary transition-[stroke-dashoffset] duration-700"
+          className={cn(tone === "highlight" ? "stroke-highlight" : "stroke-primary", "transition-[stroke-dashoffset] duration-700")}
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">{children}</div>

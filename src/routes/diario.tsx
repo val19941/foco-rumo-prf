@@ -60,7 +60,7 @@ function DiaryPage() {
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-muted-foreground">Nenhum indicador passou de 4/10 nesta semana. Continue registrando!</p>
+              <p className="text-sm text-muted-foreground">Nenhum indicador chegou a 6/10 nesta semana. Continue registrando!</p>
             )}
           </Panel>
 
@@ -106,7 +106,7 @@ function DiaryPage() {
                   </div>
                   <p className="text-xs text-muted-foreground">
                     Concentração {s.diary.focusQuality}/10 · energia {s.diary.energy}/10 · {s.diary.distractions} distração(ões)
-                    {top && sc[top] >= 4 ? ` · maior dificuldade: ${OBSTACLE_LABEL[top].toLowerCase()}` : ""}
+                    {top && sc[top] >= 6 ? ` · maior dificuldade: ${OBSTACLE_LABEL[top].toLowerCase()}` : ""}
                   </p>
                   {s.notes ? <p className="mt-0.5 text-xs italic text-muted-foreground">“{s.notes}”</p> : null}
                 </li>

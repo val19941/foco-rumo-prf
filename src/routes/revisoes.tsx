@@ -78,8 +78,8 @@ function ReviewsPage() {
         </div>
         <div className="mt-4">
           <Notice>
-            Como o desempenho ajusta as revisões: com 80% ou mais de acertos você avança para o próximo intervalo e ele
-            fica um pouco maior; entre 60% e 79% o intervalo atual se repete; abaixo de 60% o assunto volta uma etapa, é
+            Como o desempenho ajusta as revisões: com 80% ou mais de acertos você avança para o próximo intervalo (com 90%
+            ou mais, os próximos intervalos ficam 10% maiores); entre 60% e 79% o intervalo atual se repete; abaixo de 60% o assunto volta uma etapa, é
             marcado como prioritário e reaparece no dia seguinte. Errar questões em uma sessão também antecipa a revisão.
           </Notice>
         </div>

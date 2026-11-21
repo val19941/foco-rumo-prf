@@ -24,7 +24,7 @@ export function markLearned(t: Topic, intervals: number[], now: Date): Topic {
 
 /**
  * Completes a review given its accuracy (0–100):
- * ≥ 80 advances to the next interval, 60–79 repeats the current interval,
+ * ≥ 80 advances to the next interval (≥ 90 also stretches future intervals by 10%), 60–79 repeats the current interval,
  * < 60 steps back, reduces the multiplier and schedules for tomorrow with priority.
  */
 export function completeReview(t: Topic, accuracy: number, intervals: number[], now: Date): Topic {
@@ -34,7 +34,7 @@ export function completeReview(t: Topic, accuracy: number, intervals: number[], 
   let days: number;
   if (accuracy >= 80) {
     stage = t.stage + 1;
-    ease = Math.min(1.5, +(ease + 0.1).toFixed(2));
+    if (accuracy >= 90) ease = Math.min(1.5, +(ease + 0.1).toFixed(2));
     flagged = false;
     days = intervalFor(stage, intervals, ease);
   } else if (accuracy >= 60) {

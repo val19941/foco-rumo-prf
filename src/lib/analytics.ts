@@ -415,6 +415,6 @@ export function weeklyReport(sessions: Session[], now: Date): WeeklyReport {
       previous: prevScores.length ? +avg(prevScores.map((x) => x[key])).toFixed(1) : null,
     }))
     .sort((a, b) => b.value - a.value);
-  const main = cur.length ? scores.filter((s) => s.value >= 4).slice(0, 3).map((s) => s.key) : [];
+  const main = cur.length ? scores.filter((s) => s.value >= 6).slice(0, 3).map((s) => s.key) : [];
   return { sessions: cur.length, scores, main };
 }

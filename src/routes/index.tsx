@@ -65,7 +65,7 @@ function Index() {
             </div>
           </div>
           <div className="rounded-full bg-primary-foreground/10 p-1.5">
-            <Ring value={d.goal.overall} size={104} stroke={10}>
+            <Ring value={d.goal.overall} size={104} stroke={10} tone="highlight">
               <span className="font-display text-2xl font-bold">{Math.round(d.goal.overall * 100)}%</span>
               <span className="text-[10px] opacity-85">da meta</span>
             </Ring>
